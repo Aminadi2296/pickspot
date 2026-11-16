@@ -104,10 +104,12 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  // 4. Create the appointment
-  const { data: appointment, error: insertError } = await supabase
+  // 4. Create the appointment (generate ID client-side so anon INSERT doesn't require SELECT RLS)
+  const appointmentId = crypto.randomUUID()
+  const { error: insertError } = await supabase
     .from('appointments')
     .insert({
+      id: appointmentId,
       tenant_id: tenantId,
       location_id: locationId,
       service_id: serviceId,
@@ -120,10 +122,9 @@ export async function POST(request: NextRequest) {
       starts_at: startsAtDate.toISOString(),
       ends_at: endsAtDate.toISOString(),
     })
-    .select()
-    .single()
 
-  if (insertError || !appointment) {
+  if (insertError) {
+    console.error('[Appointments] Insert error:', insertError)
     return NextResponse.json({ error: 'Failed to create appointment' }, { status: 500 })
   }
 
@@ -134,12 +135,12 @@ export async function POST(request: NextRequest) {
     supabase.from('tenants').select('name, email').eq('id', tenantId).single(),
   ])
 
-  // 6. Send emails (non-blocking — don't fail the response if email fails)
+  // 6. Send emails (non-blocking for booking success, but awaited before response ends)
   if (location && staff && tenant) {
     const locationAddress = `${location.address}, ${location.city}`
     const staffName = `${staff.first_name} ${staff.last_name}`
 
-    Promise.allSettled([
+    await Promise.allSettled([
       sendBookingConfirmation({
         to: guestEmail,
         guestName,
@@ -156,9 +157,13 @@ export async function POST(request: NextRequest) {
             to: tenant.email,
             businessName: tenant.name,
             guestName,
+            guestEmail,
             guestPhone: guestPhone ?? 'Not provided',
+            notes,
             serviceName: service.name,
             staffName,
+            locationName: location.name,
+            locationAddress,
             startsAt: startsAtDate,
             timezone: location.timezone,
           })
@@ -166,5 +171,5 @@ export async function POST(request: NextRequest) {
     ])
   }
 
-  return NextResponse.json({ appointmentId: (appointment as Appointment).id }, { status: 201 })
+  return NextResponse.json({ appointmentId }, { status: 201 })
 }
