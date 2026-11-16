@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demostración de Integración - Bella Spa</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fdfbf7;
+      color: #1e293b;
+    }
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: #6366f1;
+    }
+    .nav-btn {
+      background: #6366f1;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: #0f172a;
+    }
+    .hero p {
+      font-size: 18px;
+      color: #64748b;
+      margin-bottom: 32px;
+    }
+    .hero-btn {
+      background: #6366f1;
+      color: #ffffff;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(99, 102, 241, 0.25);
+    }
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .location-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 24px;
+      text-align: left;
+    }
+    .location-card h3 {
+      margin-top: 0;
+      color: #1e293b;
+    }
+    .location-card p {
+      color: #64748b;
+      font-size: 14px;
+    }
+    .iframe-section {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .iframe-wrapper {
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      background: #ffffff;
+      height: 700px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🌿 Bella Spa & Wellness</div>
+    <button class="nav-btn" data-pickspot-open>Reservar Online</button>
+  </header>
+
+  <section class="hero">
+    <h1>Tu momento de desconexión y bienestar</h1>
+    <p>Disfruta de nuestros tratamientos faciales, masajes y cuidado personal en cualquiera de nuestras 3 sedes exclusivas.</p>
+    <!-- Botón que activa el Popup / Modal -->
+    <button class="hero-btn" data-pickspot-open>Agendar mi Cita Ahora</button>
+  </section>
+
+  <div class="locations-grid">
+    <div class="location-card">
+      <h3>📍 Downtown Miami</h3>
+      <p>1200 Brickell Ave, Suite 100</p>
+      <p>Lun - Sáb: 9:00 AM - 6:00 PM</p>
+    </div>
+    <div class="location-card">
+      <h3>📍 Coral Gables</h3>
+      <p>250 Miracle Mile</p>
+      <p>Lun - Sáb: 9:00 AM - 6:00 PM</p>
+    </div>
+    <div class="location-card">
+      <h3>📍 Doral</h3>
+      <p>8300 NW 36th St</p>
+      <p>Lun - Sáb: 9:00 AM - 6:00 PM</p>
+    </div>
+  </div>
+
+  <!-- Opción 2: O también se puede incrustar directamente en la página -->
+  <section class="iframe-section">
+    <h2>O agenda directamente aquí abajo:</h2>
+    <div class="iframe-wrapper">
+      <iframe src="http://localhost:3001/bella-spa/book" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+  </section>
+
+  <!-- Script del Widget de Pickspot -->
+  <script src="http://localhost:3001/pickspot-widget.js"></script>
+  <script>
+    PickspotWidget.init({
+      slug: 'bella-spa',
+      baseUrl: 'http://localhost:3001',
+      buttonText: '📅 Reservar Cita',
+      floatingButton: true // Muestra el botón flotante en la esquina inferior derecha
+    });
+  </script>
+
+</body>
+</html>
