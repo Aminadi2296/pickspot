@@ -126,7 +126,7 @@ export default function StaffTimeStep({
 
   return (
     <Box>
-      <Typography variant="h6" fontWeight={600} sx={{ mb: 0.5 }}>Choose Staff & Time</Typography>
+      <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>Choose Staff & Time</Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>Pick a team member, date, and available time slot.</Typography>
 
       {/* Staff selection */}
@@ -134,7 +134,7 @@ export default function StaffTimeStep({
         <CircularProgress size={24} />
       ) : (
         <Box sx={{ mb: 3 }}>
-          <Typography variant="subtitle2" fontWeight={600} sx={{ mb: 1.5 }}>Select Staff</Typography>
+          <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1.5 }}>Select Staff</Typography>
           <Grid container spacing={1.5}>
             <Grid>
               <Card
@@ -163,7 +163,7 @@ export default function StaffTimeStep({
                       >
                         {s.first_name.charAt(0)}
                       </Avatar>
-                      <Typography variant="body2" fontWeight={600}>
+                      <Typography variant="body2" sx={{ fontWeight: 600 }}>
                         {s.first_name} {s.last_name}
                       </Typography>
                     </Box>
@@ -177,22 +177,21 @@ export default function StaffTimeStep({
 
       {/* Date picker */}
       <Box sx={{ mb: 3 }}>
-        <Typography variant="subtitle2" fontWeight={600} sx={{ mb: 1.5 }}>Select Date</Typography>
+        <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1.5 }}>Select Date</Typography>
         <TextField
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          inputProps={{ min: today }}
+          slotProps={{ htmlInput: { min: today }, inputLabel: { shrink: true } }}
           size="small"
           sx={{ maxWidth: 200 }}
-          InputLabelProps={{ shrink: true }}
           label="Date"
         />
       </Box>
 
       {/* Time slots */}
       <Box sx={{ mb: 3 }}>
-        <Typography variant="subtitle2" fontWeight={600} sx={{ mb: 1.5 }}>Available Times</Typography>
+        <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1.5 }}>Available Times</Typography>
         {loadingSlots ? (
           <CircularProgress size={24} />
         ) : slotsError ? (

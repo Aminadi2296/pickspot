@@ -36,7 +36,7 @@ export default async function TenantsPage() {
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
         <Box>
-          <Typography variant="h5" fontWeight={700}>
+          <Typography variant="h5" sx={{ fontWeight: 700 }}>
             Tenants
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -76,10 +76,10 @@ export default async function TenantsPage() {
               (tenants as Tenant[]).map((tenant) => (
                 <TableRow key={tenant.id} hover>
                   <TableCell>
-                    <Typography fontWeight={600}>{tenant.name}</Typography>
+                    <Typography sx={{ fontWeight: 600 }}>{tenant.name}</Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography variant="body2" color="text.secondary" fontFamily="monospace">
+                    <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'monospace' }}>
                       {tenant.slug}
                     </Typography>
                   </TableCell>

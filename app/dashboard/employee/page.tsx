@@ -66,7 +66,7 @@ export default async function EmployeeDashboardPage() {
 
     return (
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h6" fontWeight={600} sx={{ mb: 1.5 }}>{title}</Typography>
+        <Typography variant="h6" sx={{ fontWeight: 600, mb: 1.5 }}>{title}</Typography>
         <TableContainer component={Paper} variant="outlined">
           <Table size="small">
             <TableHead>
@@ -84,7 +84,7 @@ export default async function EmployeeDashboardPage() {
                 return (
                   <TableRow key={appt.id} hover>
                     <TableCell>
-                      <Typography variant="body2" fontWeight={600}>
+                      <Typography variant="body2" sx={{ fontWeight: 600 }}>
                         {new Date(appt.starts_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                       </Typography>
                       <Typography variant="caption" color="text.secondary">
@@ -110,7 +110,7 @@ export default async function EmployeeDashboardPage() {
   return (
     <Box>
       <Box sx={{ mb: 3 }}>
-        <Typography variant="h5" fontWeight={700}>
+        <Typography variant="h5" sx={{ fontWeight: 700 }}>
           Welcome, {staffRow.first_name}!
         </Typography>
         <Typography variant="body2" color="text.secondary">

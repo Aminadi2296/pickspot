@@ -78,7 +78,7 @@ export default function ServiceStep({
         <CardActionArea onClick={() => onSelect(service)}>
           <CardContent sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Box>
-              <Typography fontWeight={600}>{service.name}</Typography>
+              <Typography sx={{ fontWeight: 600 }}>{service.name}</Typography>
               {service.description && (
                 <Typography variant="body2" color="text.secondary">{service.description}</Typography>
               )}
@@ -86,7 +86,7 @@ export default function ServiceStep({
                 {formatDuration(service.duration_min)}
               </Typography>
             </Box>
-            <Typography fontWeight={700} color="primary.main" sx={{ ml: 2, flexShrink: 0 }}>
+            <Typography color="primary.main" sx={{ fontWeight: 700, ml: 2, flexShrink: 0 }}>
               {formatPrice(service.price, service.currency)}
             </Typography>
           </CardContent>
@@ -97,12 +97,12 @@ export default function ServiceStep({
 
   return (
     <Box>
-      <Typography variant="h6" fontWeight={600} sx={{ mb: 0.5 }}>Choose a Service</Typography>
+      <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>Choose a Service</Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>What would you like to book?</Typography>
 
       {grouped.map((cat) => (
         <Box key={cat.id} sx={{ mb: 3 }}>
-          <Typography variant="overline" color="text.secondary" fontWeight={700}>{cat.name}</Typography>
+          <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700 }}>{cat.name}</Typography>
           <Divider sx={{ mb: 1.5 }} />
           {cat.services.map((s) => <ServiceCard key={s.id} service={s} />)}
         </Box>
@@ -110,7 +110,7 @@ export default function ServiceStep({
 
       {uncategorized.length > 0 && (
         <Box sx={{ mb: 3 }}>
-          {grouped.length > 0 && <Typography variant="overline" color="text.secondary" fontWeight={700}>Other</Typography>}
+          {grouped.length > 0 && <Typography variant="overline" color="text.secondary" sx={{ fontWeight: 700 }}>Other</Typography>}
           {grouped.length > 0 && <Divider sx={{ mb: 1.5 }} />}
           {uncategorized.map((s) => <ServiceCard key={s.id} service={s} />)}
         </Box>

@@ -128,7 +128,7 @@ export default function StaffPage() {
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
         <Box>
-          <Typography variant="h5" fontWeight={700}>Staff</Typography>
+          <Typography variant="h5" sx={{ fontWeight: 700 }}>Staff</Typography>
           <Typography variant="body2" color="text.secondary">Manage your team members</Typography>
         </Box>
         <Button variant="contained" startIcon={<AddIcon />} onClick={openCreate}>Add Staff</Button>
@@ -153,7 +153,7 @@ export default function StaffPage() {
                     <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.light', fontSize: 14 }}>
                       {s.first_name.charAt(0)}
                     </Avatar>
-                    <Typography fontWeight={500}>{s.first_name} {s.last_name}</Typography>
+                    <Typography sx={{ fontWeight: 500 }}>{s.first_name} {s.last_name}</Typography>
                   </Box>
                 </TableCell>
                 <TableCell>{s.email}</TableCell>
@@ -203,7 +203,7 @@ export default function StaffPage() {
               value={form.location_ids}
               onChange={(e) => setForm({ ...form, location_ids: typeof e.target.value === 'string' ? e.target.value.split(',') : e.target.value as unknown as string[] })}
               select
-              SelectProps={{ multiple: true }}
+              slotProps={{ select: { multiple: true } }}
               fullWidth
             >
               {locations.map((l) => <MenuItem key={l.id} value={l.id}>{l.name}</MenuItem>)}

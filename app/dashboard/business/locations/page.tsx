@@ -153,7 +153,7 @@ export default function LocationsPage() {
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
         <Box>
-          <Typography variant="h5" fontWeight={700}>Locations</Typography>
+          <Typography variant="h5" sx={{ fontWeight: 700 }}>Locations</Typography>
           <Typography variant="body2" color="text.secondary">Manage your business locations</Typography>
         </Box>
         <Button variant="contained" startIcon={<AddIcon />} onClick={openCreate}>
@@ -163,11 +163,11 @@ export default function LocationsPage() {
 
       <Grid container spacing={2}>
         {locations.map((loc) => (
-          <Grid item xs={12} sm={6} md={4} key={loc.id}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={loc.id}>
             <Card>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
-                  <Typography variant="h6" fontWeight={600}>{loc.name}</Typography>
+                  <Typography variant="h6" sx={{ fontWeight: 600 }}>{loc.name}</Typography>
                   <Chip
                     label={loc.is_active ? 'Active' : 'Inactive'}
                     size="small"
@@ -181,11 +181,11 @@ export default function LocationsPage() {
                 <Typography variant="body2" color="text.secondary">
                   {loc.city}{loc.state ? `, ${loc.state}` : ''} {loc.zip}
                 </Typography>
-                <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 1 }}>
+                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
                   {loc.timezone}
                 </Typography>
                 {loc.phone && (
-                  <Typography variant="caption" color="text.secondary" display="block">
+                  <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
                     {loc.phone}
                   </Typography>
                 )}
@@ -202,7 +202,7 @@ export default function LocationsPage() {
           </Grid>
         ))}
         {locations.length === 0 && (
-          <Grid item xs={12}>
+          <Grid size={12}>
             <Typography color="text.secondary" sx={{ textAlign: 'center', py: 6 }}>
               No locations yet. Add your first location!
             </Typography>
@@ -215,25 +215,25 @@ export default function LocationsPage() {
         <DialogContent>
           {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
           <Grid container spacing={2} sx={{ mt: 0 }}>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TextField label="Name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} fullWidth required />
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <TextField label="Address" value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} fullWidth required />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="City" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} fullWidth required />
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid size={{ xs: 6, sm: 3 }}>
               <TextField label="State" value={form.state} onChange={(e) => setForm({ ...form, state: e.target.value })} fullWidth />
             </Grid>
-            <Grid item xs={6} sm={3}>
+            <Grid size={{ xs: 6, sm: 3 }}>
               <TextField label="ZIP" value={form.zip} onChange={(e) => setForm({ ...form, zip: e.target.value })} fullWidth />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField label="Phone" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} fullWidth />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 label="Timezone"
                 value={form.timezone}

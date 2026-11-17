@@ -51,25 +51,25 @@ export default function BookingWizard({ tenant }: { tenant: Tenant }) {
   return (
     <Box
       sx={{
-        minHeight: '100vh',
+        minHeight: '100%',
         bgcolor: 'background.default',
-        py: { xs: 3, md: 6 },
+        py: { xs: 2, md: 2.5 },
         px: { xs: 2, md: 4 },
       }}
     >
       <Box sx={{ maxWidth: 720, mx: 'auto' }}>
         {/* Header */}
-        <Box sx={{ textAlign: 'center', mb: 4 }}>
+        <Box sx={{ textAlign: 'center', mb: 2 }}>
           <Typography variant="h4" color="primary.main" sx={{ fontWeight: 700 }}>
             {tenant.name}
           </Typography>
-          <Typography variant="body1" color="text.secondary" sx={{ mt: 0.5 }}>
+          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
             Book your appointment in just a few steps
           </Typography>
         </Box>
 
         {/* Stepper */}
-        <Stepper activeStep={activeStep} sx={{ mb: 4 }}>
+        <Stepper activeStep={activeStep} sx={{ mb: 2.5 }}>
           {STEPS.map((label) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>

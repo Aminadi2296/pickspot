@@ -131,67 +131,67 @@ export type Database = {
     Tables: {
       tenants: {
         Row: Tenant
-        Insert: Omit<Tenant, 'id' | 'created_at' | 'updated_at'>
+        Insert: Omit<Tenant, 'id' | 'created_at' | 'updated_at'> & { id?: string; created_at?: string; updated_at?: string }
         Update: Partial<Omit<Tenant, 'id' | 'created_at' | 'updated_at'>>
         Relationships: []
       }
       locations: {
         Row: Location
-        Insert: Omit<Location, 'id' | 'created_at' | 'updated_at'>
+        Insert: Omit<Location, 'id' | 'created_at' | 'updated_at'> & { id?: string; created_at?: string; updated_at?: string }
         Update: Partial<Omit<Location, 'id' | 'created_at' | 'updated_at'>>
         Relationships: []
       }
       service_categories: {
         Row: ServiceCategory
-        Insert: Omit<ServiceCategory, 'id' | 'created_at'>
+        Insert: Omit<ServiceCategory, 'id' | 'created_at'> & { id?: string; created_at?: string }
         Update: Partial<Omit<ServiceCategory, 'id' | 'created_at'>>
         Relationships: []
       }
       services: {
         Row: Service
-        Insert: Omit<Service, 'id' | 'created_at' | 'updated_at'>
+        Insert: Omit<Service, 'id' | 'created_at' | 'updated_at'> & { id?: string; created_at?: string; updated_at?: string }
         Update: Partial<Omit<Service, 'id' | 'created_at' | 'updated_at'>>
         Relationships: []
       }
       user_roles: {
         Row: UserRole
-        Insert: Omit<UserRole, 'id' | 'created_at'>
+        Insert: Omit<UserRole, 'id' | 'created_at'> & { id?: string; created_at?: string }
         Update: Partial<Omit<UserRole, 'id' | 'created_at'>>
         Relationships: []
       }
       staff: {
         Row: Staff
-        Insert: Omit<Staff, 'id' | 'created_at' | 'updated_at'>
+        Insert: Omit<Staff, 'id' | 'created_at' | 'updated_at' | 'user_id' | 'avatar_url'> & { id?: string; user_id?: string | null; avatar_url?: string | null; created_at?: string; updated_at?: string }
         Update: Partial<Omit<Staff, 'id' | 'created_at' | 'updated_at'>>
         Relationships: []
       }
       staff_locations: {
         Row: StaffLocation
-        Insert: Omit<StaffLocation, 'id' | 'created_at'>
+        Insert: Omit<StaffLocation, 'id' | 'created_at'> & { id?: string; created_at?: string }
         Update: Partial<Omit<StaffLocation, 'id' | 'created_at'>>
         Relationships: []
       }
       staff_services: {
         Row: StaffService
-        Insert: Omit<StaffService, 'id' | 'created_at'>
+        Insert: Omit<StaffService, 'id' | 'created_at'> & { id?: string; created_at?: string }
         Update: Partial<Omit<StaffService, 'id' | 'created_at'>>
         Relationships: []
       }
       staff_schedules: {
         Row: StaffSchedule
-        Insert: Omit<StaffSchedule, 'id' | 'created_at' | 'updated_at'>
+        Insert: Omit<StaffSchedule, 'id' | 'created_at' | 'updated_at'> & { id?: string; created_at?: string; updated_at?: string }
         Update: Partial<Omit<StaffSchedule, 'id' | 'created_at' | 'updated_at'>>
         Relationships: []
       }
       staff_days_off: {
         Row: StaffDayOff
-        Insert: Omit<StaffDayOff, 'id' | 'created_at'>
+        Insert: Omit<StaffDayOff, 'id' | 'created_at'> & { id?: string; created_at?: string }
         Update: Partial<Omit<StaffDayOff, 'id' | 'created_at'>>
         Relationships: []
       }
       appointments: {
         Row: Appointment
-        Insert: Omit<Appointment, 'id' | 'created_at' | 'updated_at'>
+        Insert: Omit<Appointment, 'id' | 'created_at' | 'updated_at'> & { id?: string; created_at?: string; updated_at?: string }
         Update: Partial<Omit<Appointment, 'id' | 'created_at' | 'updated_at'>>
         Relationships: []
       }

@@ -110,7 +110,7 @@ export default function NewTenantPage() {
         >
           Back to Tenants
         </Button>
-        <Typography variant="h5" fontWeight={700}>
+        <Typography variant="h5" sx={{ fontWeight: 700 }}>
           Create New Tenant
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -132,11 +132,11 @@ export default function NewTenantPage() {
           )}
 
           <Box component="form" onSubmit={handleSubmit} noValidate>
-            <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1.5 }}>
+            <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1.5 }}>
               Business Details
             </Typography>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <TextField
                   label="Business Name"
                   value={tenantName}
@@ -145,7 +145,7 @@ export default function NewTenantPage() {
                   required
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <TextField
                   label="URL Slug"
                   value={slug}
@@ -155,7 +155,7 @@ export default function NewTenantPage() {
                   helperText={`Booking page: pickspot.app/${slug}/book`}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   label="Business Email"
                   type="email"
@@ -164,7 +164,7 @@ export default function NewTenantPage() {
                   fullWidth
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   label="Business Phone"
                   value={tenantPhone}
@@ -176,11 +176,11 @@ export default function NewTenantPage() {
 
             <Divider sx={{ my: 3 }} />
 
-            <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1.5 }}>
+            <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1.5 }}>
               Owner Account
             </Typography>
             <Grid container spacing={2}>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <TextField
                   label="Owner Email"
                   type="email"
@@ -190,7 +190,7 @@ export default function NewTenantPage() {
                   required
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <TextField
                   label="Temporary Password"
                   type="password"

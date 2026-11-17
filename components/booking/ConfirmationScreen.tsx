@@ -60,7 +60,7 @@ export default function ConfirmationScreen({
           <CheckCircleIcon sx={{ fontSize: 48, color: 'success.main' }} />
         </Box>
 
-        <Typography variant="h4" fontWeight={700} sx={{ mb: 1 }}>
+        <Typography variant="h4" sx={{ fontWeight: 700, mb: 1 }}>
           You&apos;re booked!
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
@@ -82,7 +82,7 @@ export default function ConfirmationScreen({
         >
           <Box sx={{ display: 'flex', gap: 1.5, mb: 2 }}>
             <CalendarIcon color="primary" />
-            <Typography variant="subtitle1" fontWeight={700}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
               Appointment Details
             </Typography>
           </Box>
@@ -96,40 +96,40 @@ export default function ConfirmationScreen({
             }}
           >
             <Typography variant="body2" color="text.secondary">Service</Typography>
-            <Typography variant="body2" fontWeight={600}>{booking.service?.name}</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>{booking.service?.name}</Typography>
 
             <Typography variant="body2" color="text.secondary">Duration</Typography>
-            <Typography variant="body2" fontWeight={600}>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
               {booking.service ? formatDuration(booking.service.duration_min) : '—'}
             </Typography>
 
             <Typography variant="body2" color="text.secondary">Date</Typography>
-            <Typography variant="body2" fontWeight={600}>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
               {startsAt ? formatDate(startsAt, tz) : '—'}
             </Typography>
 
             <Typography variant="body2" color="text.secondary">Time</Typography>
-            <Typography variant="body2" fontWeight={600}>
+            <Typography variant="body2" sx={{ fontWeight: 600 }}>
               {startsAt ? formatTime(startsAt, tz) : '—'}
             </Typography>
 
             <Typography variant="body2" color="text.secondary">Location</Typography>
             <Box>
-              <Typography variant="body2" fontWeight={600}>{booking.location?.name}</Typography>
+              <Typography variant="body2" sx={{ fontWeight: 600 }}>{booking.location?.name}</Typography>
               <Typography variant="body2" color="text.secondary">{booking.location?.address}</Typography>
             </Box>
 
             {booking.staff && (
               <>
                 <Typography variant="body2" color="text.secondary">Staff</Typography>
-                <Typography variant="body2" fontWeight={600}>
+                <Typography variant="body2" sx={{ fontWeight: 600 }}>
                   {booking.staff.first_name} {booking.staff.last_name}
                 </Typography>
               </>
             )}
 
             <Typography variant="body2" color="text.secondary">Booking ID</Typography>
-            <Typography variant="body2" fontFamily="monospace" sx={{ wordBreak: 'break-all' }}>
+            <Typography variant="body2" sx={{ fontFamily: 'monospace', wordBreak: 'break-all' }}>
               {appointmentId.slice(0, 8)}
             </Typography>
           </Box>

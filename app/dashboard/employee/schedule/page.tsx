@@ -108,7 +108,7 @@ export default function EmployeeSchedulePage() {
     const rows = schedule.map((d) => ({
       staff_id: staffId,
       location_id: locationId,
-      day_of_week: d.day_of_week,
+      day_of_week: d.day_of_week as StaffSchedule['day_of_week'],
       is_working: d.is_working,
       start_time: d.start_time,
       end_time: d.end_time,
@@ -129,7 +129,7 @@ export default function EmployeeSchedulePage() {
   return (
     <Box>
       <Box sx={{ mb: 3 }}>
-        <Typography variant="h5" fontWeight={700}>My Schedule</Typography>
+        <Typography variant="h5" sx={{ fontWeight: 700 }}>My Schedule</Typography>
         <Typography variant="body2" color="text.secondary">
           Your working hours for each day of the week.
         </Typography>
@@ -143,8 +143,8 @@ export default function EmployeeSchedulePage() {
         {schedule.map((day) => (
           <Card key={day.day_of_week} variant="outlined">
             <CardContent>
-              <Grid container spacing={2} alignItems="center">
-                <Grid item xs={12} sm={2}>
+              <Grid container spacing={2} sx={{ alignItems: 'center' }}>
+                <Grid size={{ xs: 12, sm: 2 }}>
                   <FormControlLabel
                     control={
                       <Switch
@@ -153,26 +153,26 @@ export default function EmployeeSchedulePage() {
                         disabled={readOnly}
                       />
                     }
-                    label={<Typography fontWeight={600}>{DAY_NAMES[day.day_of_week]}</Typography>}
+                    label={<Typography sx={{ fontWeight: 600 }}>{DAY_NAMES[day.day_of_week]}</Typography>}
                   />
                 </Grid>
                 {day.is_working ? (
                   <>
-                    <Grid item xs={6} sm={2}>
-                      <TextField label="Start" type="time" value={day.start_time} onChange={(e) => updateDay(day.day_of_week, { start_time: e.target.value })} fullWidth size="small" InputLabelProps={{ shrink: true }} disabled={readOnly} />
+                    <Grid size={{ xs: 6, sm: 2 }}>
+                      <TextField label="Start" type="time" value={day.start_time} onChange={(e) => updateDay(day.day_of_week, { start_time: e.target.value })} fullWidth size="small" slotProps={{ inputLabel: { shrink: true } }} disabled={readOnly} />
                     </Grid>
-                    <Grid item xs={6} sm={2}>
-                      <TextField label="End" type="time" value={day.end_time} onChange={(e) => updateDay(day.day_of_week, { end_time: e.target.value })} fullWidth size="small" InputLabelProps={{ shrink: true }} disabled={readOnly} />
+                    <Grid size={{ xs: 6, sm: 2 }}>
+                      <TextField label="End" type="time" value={day.end_time} onChange={(e) => updateDay(day.day_of_week, { end_time: e.target.value })} fullWidth size="small" slotProps={{ inputLabel: { shrink: true } }} disabled={readOnly} />
                     </Grid>
-                    <Grid item xs={6} sm={2}>
-                      <TextField label="Break Start" type="time" value={day.break_start} onChange={(e) => updateDay(day.day_of_week, { break_start: e.target.value })} fullWidth size="small" InputLabelProps={{ shrink: true }} disabled={readOnly} />
+                    <Grid size={{ xs: 6, sm: 2 }}>
+                      <TextField label="Break Start" type="time" value={day.break_start} onChange={(e) => updateDay(day.day_of_week, { break_start: e.target.value })} fullWidth size="small" slotProps={{ inputLabel: { shrink: true } }} disabled={readOnly} />
                     </Grid>
-                    <Grid item xs={6} sm={2}>
-                      <TextField label="Break End" type="time" value={day.break_end} onChange={(e) => updateDay(day.day_of_week, { break_end: e.target.value })} fullWidth size="small" InputLabelProps={{ shrink: true }} disabled={readOnly} />
+                    <Grid size={{ xs: 6, sm: 2 }}>
+                      <TextField label="Break End" type="time" value={day.break_end} onChange={(e) => updateDay(day.day_of_week, { break_end: e.target.value })} fullWidth size="small" slotProps={{ inputLabel: { shrink: true } }} disabled={readOnly} />
                     </Grid>
                   </>
                 ) : (
-                  <Grid item xs>
+                  <Grid size="grow">
                     <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>Day off</Typography>
                   </Grid>
                 )}

@@ -55,11 +55,11 @@
       container.style.cssText = `
         position: relative;
         width: 100%;
-        max-width: 680px;
-        height: 90vh;
-        max-height: 850px;
+        max-width: 720px;
+        height: 92vh;
+        max-height: 920px;
         background: #ffffff;
-        border-radius: 16px;
+        border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         animation: pickspotFadeIn 0.25s ease-out;
@@ -67,23 +67,34 @@
 
       const closeBtn = document.createElement('button');
       closeBtn.innerHTML = '✕';
+      closeBtn.setAttribute('aria-label', 'Close booking modal');
       closeBtn.style.cssText = `
         position: absolute;
-        top: 14px;
-        right: 14px;
-        width: 32px;
-        height: 32px;
-        background: #f1f5f9;
+        top: 16px;
+        right: 16px;
+        width: 34px;
+        height: 34px;
+        background: rgba(241, 245, 249, 0.92);
         color: #475569;
-        border: none;
+        border: 1px solid rgba(226, 232, 240, 0.8);
         border-radius: 50%;
         cursor: pointer;
-        font-size: 16px;
+        font-size: 15px;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+        transition: background 0.15s ease, transform 0.15s ease;
         z-index: 10;
       `;
+      closeBtn.onmouseenter = () => {
+        closeBtn.style.background = '#e2e8f0';
+        closeBtn.style.transform = 'scale(1.05)';
+      };
+      closeBtn.onmouseleave = () => {
+        closeBtn.style.background = 'rgba(241, 245, 249, 0.92)';
+        closeBtn.style.transform = 'scale(1)';
+      };
       closeBtn.onclick = () => window.PickspotWidget.close();
 
       const iframe = document.createElement('iframe');

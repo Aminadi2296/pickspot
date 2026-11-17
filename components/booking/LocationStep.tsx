@@ -45,7 +45,7 @@ export default function LocationStep({ tenantId, selected, onSelect }: LocationS
       <Typography variant="h6" sx={{ mb: 0.5, fontWeight: 600 }}>
         Choose a Location
       </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
         Select the location you&apos;d like to visit.
       </Typography>
 

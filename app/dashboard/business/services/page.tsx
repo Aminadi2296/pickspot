@@ -32,7 +32,7 @@ const EMPTY_FORM = {
   name: '',
   description: '',
   category_id: '',
-  duration_minutes: 60,
+  duration_min: 60,
   price: '',
   currency: 'USD',
 }
@@ -52,7 +52,7 @@ export default function ServicesPage() {
   const loadData = useCallback(async (tid: string) => {
     const [{ data: sData }, { data: cData }] = await Promise.all([
       supabase.from('services').select('*').eq('tenant_id', tid).order('name'),
-      supabase.from('service_categories').select('*').eq('tenant_id', tid).order('display_order'),
+      supabase.from('service_categories').select('*').eq('tenant_id', tid).order('sort_order'),
     ])
     setServices((sData as Service[]) ?? [])
     setCategories((cData as ServiceCategory[]) ?? [])
@@ -79,7 +79,7 @@ export default function ServicesPage() {
       name: service.name,
       description: service.description ?? '',
       category_id: service.category_id ?? '',
-      duration_minutes: service.duration_minutes,
+      duration_min: service.duration_min,
       price: service.price !== null ? String(service.price / 100) : '',
       currency: service.currency,
     })
@@ -99,7 +99,7 @@ export default function ServicesPage() {
       name: form.name,
       description: form.description || null,
       category_id: form.category_id || null,
-      duration_minutes: Number(form.duration_minutes),
+      duration_min: Number(form.duration_min),
       price: priceValue,
       currency: form.currency,
       is_active: true,
@@ -130,7 +130,7 @@ export default function ServicesPage() {
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
         <Box>
-          <Typography variant="h5" fontWeight={700}>Services</Typography>
+          <Typography variant="h5" sx={{ fontWeight: 700 }}>Services</Typography>
           <Typography variant="body2" color="text.secondary">Manage your service offerings</Typography>
         </Box>
         <Button variant="contained" startIcon={<AddIcon />} onClick={openCreate}>Add Service</Button>
@@ -154,13 +154,13 @@ export default function ServicesPage() {
               return (
                 <TableRow key={service.id} hover>
                   <TableCell>
-                    <Typography fontWeight={500}>{service.name}</Typography>
+                    <Typography sx={{ fontWeight: 500 }}>{service.name}</Typography>
                     {service.description && (
                       <Typography variant="caption" color="text.secondary">{service.description}</Typography>
                     )}
                   </TableCell>
                   <TableCell>{cat?.name ?? '—'}</TableCell>
-                  <TableCell>{formatDuration(service.duration_minutes)}</TableCell>
+                  <TableCell>{formatDuration(service.duration_min)}</TableCell>
                   <TableCell>{formatPrice(service.price, service.currency)}</TableCell>
                   <TableCell>
                     <Chip label={service.is_active ? 'Active' : 'Inactive'} size="small" color={service.is_active ? 'success' : 'default'} variant="outlined" />
@@ -194,8 +194,8 @@ export default function ServicesPage() {
               <MenuItem value="">None</MenuItem>
               {categories.map((c) => <MenuItem key={c.id} value={c.id}>{c.name}</MenuItem>)}
             </TextField>
-            <TextField label="Duration (minutes)" type="number" value={form.duration_minutes} onChange={(e) => setForm({ ...form, duration_minutes: parseInt(e.target.value) })} fullWidth required inputProps={{ min: 5, step: 5 }} />
-            <TextField label="Price (leave blank for 'consultation')" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} fullWidth type="number" inputProps={{ min: 0, step: 0.01 }} helperText="Enter amount in dollars, e.g. 75.00" />
+            <TextField label="Duration (minutes)" type="number" value={form.duration_min} onChange={(e) => setForm({ ...form, duration_min: parseInt(e.target.value) })} fullWidth required slotProps={{ htmlInput: { min: 5, step: 5 } }} />
+            <TextField label="Price (leave blank for 'consultation')" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} fullWidth type="number" slotProps={{ htmlInput: { min: 0, step: 0.01 } }} helperText="Enter amount in dollars, e.g. 75.00" />
           </Box>
         </DialogContent>
         <DialogActions>

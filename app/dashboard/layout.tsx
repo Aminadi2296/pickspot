@@ -188,7 +188,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                 <ListItemIcon sx={{ minWidth: 36 }}>{item.icon}</ListItemIcon>
                 <ListItemText
                   primary={item.label}
-                  primaryTypographyProps={{ fontSize: 14, fontWeight: 500 }}
+                  slotProps={{ primary: { sx: { fontSize: 14, fontWeight: 500 } } }}
                 />
               </ListItemButton>
             </ListItem>
@@ -204,10 +204,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           {user?.email?.charAt(0).toUpperCase()}
         </Avatar>
         <Box sx={{ flex: 1, minWidth: 0 }}>
-          <Typography variant="caption" noWrap display="block" color="text.secondary">
+          <Typography variant="caption" noWrap color="text.secondary" sx={{ display: 'block' }}>
             {user?.email}
           </Typography>
-          <Typography variant="caption" noWrap display="block" sx={{ textTransform: 'capitalize', fontWeight: 600 }}>
+          <Typography variant="caption" noWrap sx={{ display: 'block', textTransform: 'capitalize', fontWeight: 600 }}>
             {role?.replace('_', ' ')}
           </Typography>
         </Box>

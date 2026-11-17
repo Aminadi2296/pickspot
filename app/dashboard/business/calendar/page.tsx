@@ -111,13 +111,13 @@ export default function CalendarPage() {
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h5" fontWeight={700}>Calendar</Typography>
+        <Typography variant="h5" sx={{ fontWeight: 700 }}>Calendar</Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Button variant="outlined" size="small" startIcon={<TodayIcon />} onClick={() => setWeekStart(startOfWeek(new Date()))}>
             Today
           </Button>
           <IconButton size="small" onClick={() => navigate(-1)}><PrevIcon /></IconButton>
-          <Typography variant="body2" fontWeight={600} sx={{ minWidth: 180, textAlign: 'center' }}>
+          <Typography variant="body2" sx={{ fontWeight: 600, minWidth: 180, textAlign: 'center' }}>
             {days[0].toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} –{' '}
             {days[6].toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
           </Typography>
@@ -149,8 +149,7 @@ export default function CalendarPage() {
                   <Typography variant="caption" color="text.secondary">{DAY_LABELS[i]}</Typography>
                   <Typography
                     variant="body2"
-                    fontWeight={isToday ? 700 : 400}
-                    sx={{ color: isToday ? 'primary.main' : 'text.primary' }}
+                    sx={{ fontWeight: isToday ? 700 : 400, color: isToday ? 'primary.main' : 'text.primary' }}
                   >
                     {day.getDate()}
                   </Typography>
@@ -195,10 +194,10 @@ export default function CalendarPage() {
                             mb: 0.5,
                           }}
                         >
-                          <Typography variant="caption" fontWeight={600} display="block" noWrap>
+                          <Typography variant="caption" sx={{ fontWeight: 600, display: 'block' }} noWrap>
                             {formatTime(new Date(appt.starts_at))} {appt.guestName}
                           </Typography>
-                          <Typography variant="caption" color="text.secondary" display="block" noWrap>
+                          <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }} noWrap>
                             {appt.serviceName}
                           </Typography>
                           <Chip

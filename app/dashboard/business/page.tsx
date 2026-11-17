@@ -81,7 +81,7 @@ function StatCard({ label, value, icon, color }: StatCardProps) {
           {icon}
         </Box>
         <Box>
-          <Typography variant="h4" fontWeight={700} lineHeight={1}>
+          <Typography variant="h4" sx={{ fontWeight: 700, lineHeight: 1 }}>
             {value}
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
@@ -117,7 +117,7 @@ export default async function BusinessOverviewPage() {
   return (
     <Box>
       <Box sx={{ mb: 3 }}>
-        <Typography variant="h5" fontWeight={700}>
+        <Typography variant="h5" sx={{ fontWeight: 700 }}>
           {tenant?.name ?? 'Dashboard'}
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -126,7 +126,7 @@ export default async function BusinessOverviewPage() {
       </Box>
 
       <Grid container spacing={2.5}>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <StatCard
             label="Appointments Today"
             value={stats.today}
@@ -134,7 +134,7 @@ export default async function BusinessOverviewPage() {
             color="#6366f1"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <StatCard
             label="Upcoming This Week"
             value={stats.week}
@@ -142,7 +142,7 @@ export default async function BusinessOverviewPage() {
             color="#ec4899"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <StatCard
             label="Active Staff"
             value={stats.staff}
@@ -150,7 +150,7 @@ export default async function BusinessOverviewPage() {
             color="#10b981"
           />
         </Grid>
-        <Grid item xs={12} sm={6} md={3}>
+        <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <StatCard
             label="Locations"
             value={stats.locations}

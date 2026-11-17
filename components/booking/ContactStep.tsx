@@ -84,7 +84,7 @@ export default function ContactStep({
 
   return (
     <Box>
-      <Typography variant="h6" fontWeight={600} sx={{ mb: 0.5 }}>
+      <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
         Your Details
       </Typography>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
@@ -102,26 +102,26 @@ export default function ContactStep({
           mb: 3,
         }}
       >
-        <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 1 }}>
+        <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1 }}>
           Booking Summary
         </Typography>
         <Box sx={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 0.5 }}>
           <Typography variant="caption" color="text.secondary">Service:</Typography>
-          <Typography variant="caption" fontWeight={600}>{booking.service?.name}</Typography>
+          <Typography variant="caption" sx={{ fontWeight: 600 }}>{booking.service?.name}</Typography>
           <Typography variant="caption" color="text.secondary">Date:</Typography>
-          <Typography variant="caption" fontWeight={600}>
+          <Typography variant="caption" sx={{ fontWeight: 600 }}>
             {startsAt ? formatDate(startsAt, booking.location?.timezone) : '—'}
           </Typography>
           <Typography variant="caption" color="text.secondary">Time:</Typography>
-          <Typography variant="caption" fontWeight={600}>
+          <Typography variant="caption" sx={{ fontWeight: 600 }}>
             {startsAt ? formatTime(startsAt, booking.location?.timezone) : '—'}
           </Typography>
           <Typography variant="caption" color="text.secondary">Location:</Typography>
-          <Typography variant="caption" fontWeight={600}>{booking.location?.name}</Typography>
+          <Typography variant="caption" sx={{ fontWeight: 600 }}>{booking.location?.name}</Typography>
           {booking.staff && (
             <>
               <Typography variant="caption" color="text.secondary">Staff:</Typography>
-              <Typography variant="caption" fontWeight={600}>
+              <Typography variant="caption" sx={{ fontWeight: 600 }}>
                 {booking.staff.first_name} {booking.staff.last_name}
               </Typography>
             </>
